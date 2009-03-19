@@ -78,3 +78,22 @@ body {
 	color: #FFFFFF;
 	font-weight: bold;
 }
+
+.createInput {
+	color: #FFFFFF; 
+	background-color: #418BD4; 
+/* 	font-size: 12px;  */
+/* 	font-family: Verdana;  */
+/* 	width: 100px;  */
+/* 	height: 30px;  */
+	border-style: solid;
+	border-color: #000000; 
+	border-width: 1px;
+}
+
+#create {
+	text-align: center;
+	border: solid 1px #000000;
+	margin: 30px;
+	padding: 5px;
+}
