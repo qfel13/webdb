@@ -1,0 +1,80 @@
+body {
+	font: 13px/20px sans-serif; 
+	background-color: #FFF;
+	margin: 0px;
+}
+
+.top {
+	height: 20px;
+	text-align: right;
+	background-color: #98BBDE;
+	padding-right: 5px;
+}
+
+.top a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.topBeta {
+	color: #FF0000;
+	vertical-align: top;
+	font-size: 9px;
+}
+
+#goOfflineLink {
+	font-weight: bold;
+}
+
+#workOfflineLink {
+	font-weight: bold;
+	margin-left: 2px;
+	display: none;
+}
+#workOnlineLink {
+	font-weight: bold;
+	margin-left: 2px;
+	display: none;
+}
+
+#gearsinfo {
+/* 	width: 300px; */
+	background-color: #E57F11;
+/* 	color: #FFFFFF; */
+	font-weight: bold;
+}
+
+#info {
+	
+}
+
+.invisible {
+	display: none;
+}
+
+.inline {
+	display: inline;
+}
+
+.tableinfo {
+	margin-top: 20px;
+	border: solid 1px black;
+}
+
+.tdinfo {
+	border: solid 1px black;
+	background-color: #98BBDE;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.tdinfo input {
+	border: 1px solid green;
+}
+
+.tdheader {
+	border: solid 1px black;
+	background-color: #418BD4;
+	color: #FFFFFF;
+	font-weight: bold;
+}

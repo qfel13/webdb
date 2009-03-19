@@ -1,0 +1,14 @@
+{
+	"betaManifestVersion": 1,
+	"version": "webdb12",
+	"entries": [
+		{ "url": "index.html" },
+		{ "url": "style.css" },
+		{ "url": "avatar.png" },
+		{ "url": "gears_init.js" },
+		{ "url": "database_module.js" },
+		{ "url": "localserver_module.js" },
+		{ "url": "offline_module.js" },
+		{ "url": "sql_queries.js" }
+	]
+}

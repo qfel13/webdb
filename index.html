@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>WebDb by Q</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript" src="gears_init.js"></script>
+	<script type="text/javascript" src="localserver_module.js"></script>
+	<script type="text/javascript" src="sql_queries.js"></script>
+	<script type="text/javascript" src="database_module.js"></script>
+	<script type="text/javascript" src="offline_module.js"></script>
+	<script type="text/javascript" src="dataprovider.js"></script>
+	<script type="text/javascript">
+		function hideElement(id) {
+			var element = document.getElementById(id);
+			element.style.display = 'none';
+			// CIEKAWOSTKA
+			//console.debug("element.className", element.className);
+			//element.className = "invisible";
+		}
+
+		function showElement(id) {
+			var element = document.getElementById(id);
+			element.style.display = 'inline';
+		}
+
+		function init() {
+			if (!window.google || !google.gears) {
+				hideElement("goOfflineLink");
+				showElement("installGearsLink");
+				return;
+			}
+			hideElement("installGearsLink");
+			if (google.gears.factory.hasPermission) {
+				// already been here 
+				console.debug("already been here and have permission from user");
+				initOffline();
+			}
+			//TODO: add check if all was initialized and only synchronization is needed
+		}
+	</script>
+</head>
+<body onload="init()">
+	<div class="top">
+		<a id="installGearsLink" href="http://gears.google.com/?action=install&message=cześć&return=http://localhost/">install Gears!!</a>
+		<a id="goOfflineLink" href="javascript: initOffline()">Offline<span class="topBeta">beta</span></a>
+		<a id="workOfflineLink" href="javascript: workOffline()">Work offline</a>
+		<a id="workOnlineLink" href="javascript: workOnline()">Work online</a>
+	</div>
+	<div id="info">
+		<div id="gearsinfo"></div>
+		<table class="tableinfo">
+			<tr>
+				<td class="tdheader">database initialization: </td>
+				<td id="database_schemaVersion" class="tdinfo"></td>
+				<td id="database_requiredVersion" class="tdinfo"></td>
+				<td id="database_success" class="tdinfo"></td>
+			</tr>
+			<tr>
+				<td class="tdheader">localserver initialization: </td>
+				<td id="localserver_onprogress" class="tdinfo"></td>
+				<td id="localserver_oncomplete" class="tdinfo"></td>
+				<td id="localserver_onerror" class="tdinfo"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
