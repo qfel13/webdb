@@ -42,10 +42,6 @@ function checkSchemaVersion() {
 	var successElement = document.getElementById("database_success");
 	successElement.innerHTML = "success: " + success;
 
-	// TODO: remove
-	var ldp = new LocalDataProvider();
-	alert(ldp.getTableList());
-
 	return success;
 }
 

@@ -21,7 +21,17 @@
 
 		function showElement(id) {
 			var element = document.getElementById(id);
-			element.style.display = 'inline';
+			element.style.display = '';
+		}
+
+		function showCreate() {
+			hideElement("tableList");
+			showElement("create");
+		}
+
+		function showTables() {
+			hideElement("create");
+			showElement("tableList");
 		}
 
 		function init() {
@@ -32,7 +42,7 @@
 			}
 			hideElement("installGearsLink");
 			if (google.gears.factory.hasPermission) {
-				// already been here 
+				// already been here and get permission before
 				console.debug("already been here and have permission from user");
 				initOffline();
 			}
@@ -41,13 +51,13 @@
 	</script>
 </head>
 <body onload="init()">
-	<div class="top">
+	<div class="top" style="display: none;">
 		<a id="installGearsLink" href="http://gears.google.com/?action=install&message=cześć&return=http://localhost/">install Gears!!</a>
 		<a id="goOfflineLink" href="javascript: initOffline()">Offline<span class="topBeta">beta</span></a>
 		<a id="workOfflineLink" href="javascript: workOffline()">Work offline</a>
 		<a id="workOnlineLink" href="javascript: workOnline()">Work online</a>
 	</div>
-	<div id="info" class="invisible">
+	<div id="info">
 		<div id="gearsinfo"></div>
 		<table class="tableinfo">
 			<tr>
@@ -64,39 +74,66 @@
 			</tr>
 		</table>
 	</div>
-	<div id="create">
-		<form>
+	<div id="controlPanel">
+		<div id="navigationPanel" style="display: none;">
+			tables<br />
+			queries<br />
+			forms
+		</div>
+		<div id="tablePanel">
+			<a href="javascript: showCreate();">create table</a>
+			<a href="javascript: showTables();">show tables</a>
+<!-- 		<a href="javascript: "></a> -->
+		</div>
+	</div>
+	<div id="tableList" style="display: none;">
+		Table List:
+		<div id="tableListEntries"></div>
+	</div>
+
+	<div id="tableDetails" style="display: none;">
+	</div>
+
+	<div id="create" style="display: none;">
+		<div id="createHeader">
+			Create table
+		</div>
+		<form onsubmit="data.createTable(); return false;">
 			<div id="create0">
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				Table name: 
+				<input id="tableName" type="text" class="createInput"/>
 			</div>
 			<div id="create1">
+				Column 1: 
 				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				<input type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create2">
+				Column 2: 
 				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				<input type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create3">
+				Column 3: 
 				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				<input type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create4">
+				Column 4: 
 				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				<input type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create5">
+				Column 5: 
 				<input type="text" class="createInput"/>
-				<input type="text" class="createInput"/>
+				<input type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
-
+			<input type="submit" value="create" />
 		</form>
 	</div>
 </body>

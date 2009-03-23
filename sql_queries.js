@@ -29,7 +29,7 @@ SqlQueries.deleteQueries.deleteTableFieldsAll = "DELETE FROM __webdb_tablefields
 SqlQueries.selectQueries = {};
 SqlQueries.selectQueries.selectSchemaVersion = "SELECT version from __webdb_schema";
 SqlQueries.selectQueries.selectTableList = "SELECT tablename FROM __webdb_tablelist";
-SqlQueries.selectQueries.selectTableList = "SELECT fieldname FROM __webdb_tablefields";
+SqlQueries.selectQueries.selectTableFields = "SELECT fieldname FROM __webdb_tablefields WHERE table_id in (SELECT id FROM __webdb_tablelist WHERE tablename = ?)";
 
 
 //

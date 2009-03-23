@@ -16,6 +16,27 @@ function initOffline() {
 	} else {
 		//TODO: show information that initialization failed and what to do with it
 	}
+
+	showTableList();
+}
+
+function showTableList() {
+	var ldp = new LocalDataProvider();
+	var tablelist = ldp.getTableList();
+	var el = document.getElementById("tableListEntries");
+	console.debug(tablelist);
+	var listStr = "";
+	for (var i in tablelist) {
+		listStr += "<div class=\"tableborder\"><div class=\"tablename\">" 
+						+ "<a href=\"javascript: showTable(" + tablelist[i] + ");\">"
+						+ tablelist[i] + "</a>" + "</div>";
+		var fieldslist = ldp.getTableFields(tablelist[i]);
+		for (var i in fieldslist) {
+			listStr += "<div class=\"fieldname\">" + fieldslist[i] + "</div>";
+		}
+		listStr += "</div>";
+	}
+	el.innerHTML = listStr;
 }
 
 function workOffline() {

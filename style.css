@@ -90,10 +90,43 @@ body {
 	border-color: #000000; 
 	border-width: 1px;
 }
+.width100 {
+	width: 100px;
+}
 
 #create {
 	text-align: center;
 	border: solid 1px #000000;
 	margin: 30px;
 	padding: 5px;
+}
+
+#create0 {
+	margin-bottom: 10px;
+}
+
+#createHeader {
+	font-size: 20px;
+}
+
+.tablename {
+	font-size: 16px;
+	font-weight: bold;
+	background-color: #539ADF;
+	border: 1px solid #FFFFFF;
+}
+.tablename a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.tableborder {
+	width: 150px;
+/* 	background-color: #98BBDE; */
+	border: 1px solid #000000;
+	margin-bottom: 2px;
+}
+
+.fieldname {
+	padding-left: 20px;
 }
