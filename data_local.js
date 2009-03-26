@@ -1,20 +1,4 @@
-function DataProvider() {
-	this.localData = new LocalDataProvider();
-	this.remoteData = new RemoteDataProvider();
-	this.setDataProviderToLocal();
-}
-
-DataProvider.prototype.setDataProviderToLocal = function() {
-	this.data = this.localData;
-}
-
-DataProvider.prototype.setDataProviderToRemote = function() {
-	this.data = this.remoteData;
-}
-
-DataProvider.prototype.getTableList = function() {
-	return this.data.getTableList();
-}
+// class LocalDataProvider called by DataProvider
 
 function LocalDataProvider() {
 	
@@ -46,10 +30,18 @@ LocalDataProvider.prototype.getTableFields = function(tablename) {
 	return fieldsList;
 }
 
-function RemoteDataProvider() {
-	
+LocalDataProvider.prototype.createTable = function(tablename, fieldsNames, fieldsTypes) {
+	var query = "CREATE TABLE " +  tablename + "(";
+	if (fieldsNames.length == 0) {
+		return false;
+	} else {
+		for (var i = 0; i < fieldsNames.length; i++) {
+			query += fieldsNames[i] + " " + fieldsTypes[i];
+			if (i != fieldsNames.length) {
+				query += ", ";
+			}
+		}
+		query += ")";
+		alert(query);
+	}
 }
-
-//LocalDataProvider.prototype.getTableList
-
-//RemoteDataProvider.prototype.getTableList

@@ -67,12 +67,3 @@ function updateDatabaseSchema() {
 	return success;
 }
 //TODO: function synchronizeDatabases
-
-// constructor
-function Data() {
-	this.tableList = ["A", "B"];
-}
-
-Data.prototype.getTableList = function(){
-	return this.tableList;
-}

@@ -7,9 +7,11 @@
 	<script type="text/javascript" src="gears_init.js"></script>
 	<script type="text/javascript" src="localserver_module.js"></script>
 	<script type="text/javascript" src="sql_queries.js"></script>
-	<script type="text/javascript" src="database_module.js"></script>
+	<script type="text/javascript" src="init_local_db.js"></script>
 	<script type="text/javascript" src="offline_module.js"></script>
-	<script type="text/javascript" src="dataprovider.js"></script>
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="data_local.js"></script>
+	<script type="text/javascript" src="data_remote.js"></script>
 	<script type="text/javascript">
 		function hideElement(id) {
 			var element = document.getElementById(id);
@@ -48,10 +50,26 @@
 			}
 			//TODO: add check if all was initialized and only synchronization is needed
 		}
+
+		function createTable() {
+			var ldp = new LocalDataProvider();
+			var tableName = document.getElementById("tableName").value;
+			fieldsNames = [];
+			fieldsTypes = [];
+			for (var i = 1; i <= 5; i++) {
+				var fieldName = document.getElementById("fieldName" + i).value
+				if (fieldName.length == 0) {
+					continue;
+				}
+				fieldsNames.push(fieldName);
+				fieldsTypes.push(document.getElementById("fieldType" + i).value);
+			}
+			var success = ldp.createTable(tableName, fieldsNames, fieldsTypes);
+		}
 	</script>
 </head>
 <body onload="init()">
-	<div class="top" style="display: none;">
+	<div class="top">
 		<a id="installGearsLink" href="http://gears.google.com/?action=install&message=cześć&return=http://localhost/">install Gears!!</a>
 		<a id="goOfflineLink" href="javascript: initOffline()">Offline<span class="topBeta">beta</span></a>
 		<a id="workOfflineLink" href="javascript: workOffline()">Work offline</a>
@@ -98,42 +116,42 @@
 		<div id="createHeader">
 			Create table
 		</div>
-		<form onsubmit="data.createTable(); return false;">
+		<form onsubmit="createTable(); return false;">
 			<div id="create0">
 				Table name: 
 				<input id="tableName" type="text" class="createInput"/>
 			</div>
 			<div id="create1">
 				Column 1: 
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput" value="TEXT"/>
+				<input id="fieldName1" type="text" class="createInput"/>
+				<input id="fieldType1" type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create2">
 				Column 2: 
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput" value="TEXT"/>
+				<input id="fieldName2" type="text" class="createInput"/>
+				<input id="fieldType2" type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create3">
 				Column 3: 
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput" value="TEXT"/>
+				<input id="fieldName3" type="text" class="createInput"/>
+				<input id="fieldType3" type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create4">
 				Column 4: 
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput" value="TEXT"/>
+				<input id="fieldName4" type="text" class="createInput"/>
+				<input id="fieldType4" type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
 			<div id="create5">
 				Column 5: 
-				<input type="text" class="createInput"/>
-				<input type="text" class="createInput" value="TEXT"/>
+				<input id="fieldName5" type="text" class="createInput"/>
+				<input id="fieldType5" type="text" class="createInput" value="TEXT"/>
 				<input type="text" class="createInput"/>
 			</div>
-			<input type="submit" value="create" />
+			<input type="button" value="create" onclick="createTable();"/>
 		</form>
 	</div>
 </body>
